@@ -1,9 +1,11 @@
 name: Node Continuous Integration
 
 on:
-  pull_request:
-    branches: [ master ]
-
+  #pull_request:
+    #branches: [ master ]
+  schedule:
+      - cron: 10 * * * *
+      # - cron: '30 5 * * 2,4'
 
 jobs:
   test_pull_request:

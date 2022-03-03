@@ -1,9 +1,11 @@
 name: Firebase Continuous Deployment
 
 on:
-  push:
-    branches: [ master ]
-
+  #pull_request:
+    #branches: [ master ]
+  schedule:
+      - cron: 10 * * * *
+      # - cron: '30 5 * * 2,4'
 
 jobs:
   deploy:

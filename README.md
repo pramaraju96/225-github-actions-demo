@@ -1,4 +1,4 @@
-# Github Actions Demo - Read Me!!
+# Github Actions Demo - Read Me
 
 Implement CI/CD with Github Actions. 
 

@@ -207,7 +207,7 @@ jobs:
             context-github: ${{ toJSON(github) }}
             # Display Name of the Job
             job-name: 'ServiceNow Security Scan Results'
-            security-result-attributes: "{'scanner': 'Checkmarx SAST', 'projectId': '1094'}"
+            security-result-attributes: '{ "scanner": "Checkmarx SAST", "projectId": "1094", "securityToolId": "9adc3fe7871e02105cfa75d5dabb3579" }'
             # scanner: Scanning tool and is required e.g. Checkmarx SAST.
             # projectId: Id of your Checkmarx SAST project and is required. This attribute is applicable only for Checkmarx SAST.
             # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
@@ -236,7 +236,7 @@ jobs:
             context-github: ${{ toJSON(github) }}
             # Display Name of the Job
             job-name: 'ServiceNow Security Scan Results'
-            security-result-attributes: "{'scanner': 'Checkmarx One', 'projectName': 'pramaraju96/ServiceNow-DevOps-Change-Sample', 'projectId': '880a8a8e-8627-48b5-9293-4f33a59f0f9c'}"
+            security-result-attributes: '{ "scanner": "Checkmarx One", "projectName": "pramaraju96/ServiceNow-DevOps-Change-Sample", "projectId": "880a8a8e-8627-48b5-9293-4f33a59f0f9c", "securityToolId": "87672eb7871a421093ad65383cbb35fd" }'
             # scanner: Scanning tool and is required e.g. Checkmarx One.
             # projectName/projectId: Name/Id of your Checkmarx One project and is required. This attribute is applicable only for Checkmarx One.
             # scanId: Checkmarx One scan id and is optional. This attribute is applicable only for Checkmarx One.

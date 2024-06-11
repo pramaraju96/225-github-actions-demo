@@ -42,23 +42,27 @@ jobs:
     - name: Run Tests with Maven
       run: mvn -B test --file pom.xml
 
-    # - name: ServiceNow DevOps Unit Test Results
-    # # You may pin to the exact commit or the version.
-    #   uses: ServiceNow/servicenow-devops-test-report@v3.1.0
-    #   with:
-    #       # Devops Integration Token
-    #       devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-    #       # ServiceNow Instance Name
-    #       instance-url: ${{ secrets.SN_INSTANCE_URL }}
-    #       # Orchestration Tool Id
-    #       tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-    #       # Job Name
-    #       job-name: 'Test' # Should be same name as declared in 'name' clause of the current Stage
-    #       # Github Context
-    #       context-github: ${{ toJSON(github) }}
-    #       # JUnit xml report file name with path
-    #       xml-report-filename: target/surefire-reports/testng-results.xml # if only JUnit tests, use target/surefire-reports/testng-results.xml
-    #                                                                       # if both JUnit & TestNG tests, use target/surefire-reports/testng-junit-results/testng-results.xml
+    - name: ServiceNow DevOps Unit Test Results
+    # You may pin to the exact commit or the version.
+      uses: ServiceNow/servicenow-devops-test-report@v3.1.0
+      with:
+          # Devops Integration User Name
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          # Devops Integration User Password
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          # Devops Integration Token
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+          # ServiceNow Instance Name
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          # Orchestration Tool Id
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          # Job Name
+          job-name: 'Test' # Should be same name as declared in 'name' clause of the current Stage
+          # Github Context
+          context-github: ${{ toJSON(github) }}
+          # JUnit xml report file name with path
+          xml-report-filename: target/surefire-reports/testng-results.xml # if only JUnit tests, use target/surefire-reports/testng-results.xml
+                                                                          # if both JUnit & TestNG tests, use target/surefire-reports/testng-junit-results/testng-results.xml
 
   registerArtifact:
     name: 'Register Artifact'
@@ -69,6 +73,10 @@ jobs:
     # You may pin to the exact commit or the version.          
       uses: ServiceNow/servicenow-devops-register-artifact@v3.1.0
       with:
+          # Devops Integration User Name
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          # Devops Integration User Password
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
           # Devops Integration Token
           devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           # ServiceNow Instance URL
@@ -126,10 +134,14 @@ jobs:
     # You may pin to the exact commit or the version.     
       uses: ServiceNow/servicenow-devops-sonar@v3.1.0
       with:
+          # Devops Integration User Name
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          # Devops Integration User Password
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          # Devops Integration Token
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}      
           # ServiceNow Instance URL
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          # Devops Integration Token
-          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           # Orchestration Tool Id
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           # Github Context
@@ -155,6 +167,8 @@ jobs:
               devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
               # Devops Integration User Password
               devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+              # Devops Integration Token
+              devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
               # ServiceNow Instance URL
               instance-url: ${{ secrets.SN_INSTANCE_URL }}
               # Orchestration Tool Id
@@ -183,6 +197,8 @@ jobs:
             devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
             # Devops Integration User Password
             devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+            # Devops Integration Token
+            devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
             # ServiceNow Instance URL
             instance-url: ${{ secrets.SN_INSTANCE_URL }}
             # Orchestration Tool Id
@@ -210,6 +226,8 @@ jobs:
             devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
             # Devops Integration User Password
             devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+            # Devops Integration Token
+            devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
             # ServiceNow Instance URL
             instance-url: ${{ secrets.SN_INSTANCE_URL }}
             # Orchestration Tool Id
@@ -233,6 +251,10 @@ jobs:
     # You may pin to the exact commit or the version.           
       uses: ServiceNow/servicenow-devops-register-package@v3.1.0
       with:
+          # Devops Integration User Name
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          # Devops Integration User Password
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
           # Devops Integration Token
           devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           # ServiceNow Instance URL
@@ -285,6 +307,10 @@ jobs:
         id: create_change
         uses: ServiceNow/servicenow-devops-change@v4.0.0
         with:
+          # Devops Integration User Name
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          # Devops Integration User Password
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
           # Devops Integration Token
           devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           # ServiceNow Instance URL
@@ -295,7 +321,7 @@ jobs:
           context-github: ${{ toJSON(github) }}
           # Display Name of the Job
           job-name: 'ServiceNow DevOps Change Automation'
-          #change-request: '{"attributes":{"chg_model":{"name":"DevOps"}, "service_offering": "e94c535c87298610597bca26cebb35f5", "requested_by":{"name": "DevOps System"},"assignment_group":{"name": "Change management"},"priority": "2","comments": "This is a sample pipeline script to be added in your change step","work_notes": "Update this to work_notes","start_date": "","end_date": ""}}'
+          #change-request: '{"attributes":{"chg_model":{"name":"DevOps"}, "requested_by":{"name": "DevOps System"},"assignment_group":{"name": "Change management"},"priority": "2","comments": "This is a sample pipeline script to be added in your change step","work_notes": "Update this to work_notes","start_date": "","end_date": ""}}'
           change-request: '{"attributes":{"type":"normal"}}'
           # You can specify the requested_by attribute either with name or sys_id. Example: "requested_by":{"name": "Test User"} or "requested_by": "62826bf03710200044e0bfc8bcbe5df1"
           # You can specify the assignment_group attribute either with name or sys_id. Example: "assignment_group":{"name": "Change Approval Team"} or "assignment_group": "5f721d93c0a8010e015533746de18bf9"
@@ -320,14 +346,14 @@ jobs:
         # uses: ServiceNow/servicenow-devops-get-change@38d27ed6413d88e7b7fa9a7db248a2caaaf09596
         uses: ServiceNow/servicenow-devops-get-change@v3.1.0
         with:
+          # Devops Integration User Name
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          # Devops Integration User Password
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          # Devops Integration Token
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}        
           # ServiceNow Instance URL
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          # # Devops Integration User Name
-          # devops-integration-user-name: # optional
-          # # Devops Integration User Password
-          # devops-integration-user-password: ${{ secrets.SN_DEVOPS_TOKEN }}
-          # Devops Integration Token
-          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           # Orchestration Tool Id
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           # Github Context
@@ -347,16 +373,18 @@ jobs:
         # uses: ServiceNow/servicenow-devops-update-change@d7abfe557487fe1122e138eab6dae709df1e7780
         uses: ServiceNow/servicenow-devops-update-change@v3.1.0
         with:
+          # Devops Integration User Name
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          # Devops Integration User Password
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          # Devops Integration Token
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}        
           # ServiceNow Instance URL
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           # ServiceNow Devops security token
           devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           # Orchestration Tool Id of the tool created in ServiceNow
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-          # # Devops Integration User Name
-          # devops-integration-user-name: # optional
-          # # Devops Integration User Password
-          # devops-integration-user-password: # optional
           # Github Context
           context-github: ${{ toJSON(github) }}
           # Change Request Number to be Updated

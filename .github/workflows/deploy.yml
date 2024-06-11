@@ -319,7 +319,7 @@ jobs:
           # start_date: Enter the planned start date
           # end_date: Enter the planned end date
           abortOnChangeCreationFailure: false
-          deployment-gates: '{"environment":"production","jobName":"PostChange"}'
+          deployment-gate: '{"environment":"production","jobName":"PostChange"}'
 
       - name: Output of ServiceNow DevOps Change Automation
         run: |

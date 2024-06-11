@@ -153,64 +153,64 @@ jobs:
           # Sonar Project Key
           sonar-project-key: ${{ secrets.SONAR_PROJECT_KEY }}
 
-  ServiceNowSecurityScanResultsVeracode:
-      # jobs that must complete successfully before this job will run
-      needs: sonarScan
-      # type of machine to run the job on
-      runs-on: ubuntu-latest
-      name: ServiceNow Security Scan Results
-      steps:
-        - name: ServiceNow DevOps Security Results
-          uses: ServiceNow/servicenow-devops-security-result@v3.1.0
-          with:
-              # Devops Integration User Name
-              devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-              # Devops Integration User Password
-              devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
-              # Devops Integration Token
-              devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-              # ServiceNow Instance URL
-              instance-url: ${{ secrets.SN_INSTANCE_URL }}
-              # Orchestration Tool Id
-              tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-              # GitHub Context
-              context-github: ${{ toJSON(github) }}
-              # Display Name of the Job
-              job-name: 'ServiceNow Security Scan Results'
-              security-result-attributes: '{ "scanner": "${{ secrets.SCANNER_NAME_VERACODE }}", "applicationName": "${{ secrets.VULNERABILITY_APPLICATION_NAME }}" }'
-              # applicationName: Name of your Veracode application and is required. This attribute is applicable only for Veracode.
-              # scanner: Scanning tool and is required e.g. Veracode.
-              # buildVersion: Veracode Scan name / build version and is optional. This attribute is applicable only for Veracode.
-              # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
+  # ServiceNowSecurityScanResultsVeracode:
+  #     # jobs that must complete successfully before this job will run
+  #     needs: sonarScan
+  #     # type of machine to run the job on
+  #     runs-on: ubuntu-latest
+  #     name: ServiceNow Security Scan Results
+  #     steps:
+  #       - name: ServiceNow DevOps Security Results
+  #         uses: ServiceNow/servicenow-devops-security-result@v3.1.0
+  #         with:
+  #             # Devops Integration User Name
+  #             devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+  #             # Devops Integration User Password
+  #             devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+  #             # Devops Integration Token
+  #             devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+  #             # ServiceNow Instance URL
+  #             instance-url: ${{ secrets.SN_INSTANCE_URL }}
+  #             # Orchestration Tool Id
+  #             tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+  #             # GitHub Context
+  #             context-github: ${{ toJSON(github) }}
+  #             # Display Name of the Job
+  #             job-name: 'ServiceNow Security Scan Results'
+  #             security-result-attributes: '{ "scanner": "${{ secrets.SCANNER_NAME_VERACODE }}", "applicationName": "${{ secrets.VULNERABILITY_APPLICATION_NAME }}" }'
+  #             # applicationName: Name of your Veracode application and is required. This attribute is applicable only for Veracode.
+  #             # scanner: Scanning tool and is required e.g. Veracode.
+  #             # buildVersion: Veracode Scan name / build version and is optional. This attribute is applicable only for Veracode.
+  #             # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
 
-  ServiceNowSecurityScanResultsCheckmarxSAST:
-    # jobs that must complete successfully before this job will run
-    needs: sonarScan
-    # type of machine to run the job on
-    runs-on: ubuntu-latest
-    name: ServiceNow Security Scan Results
-    steps:
-      - name: ServiceNow DevOps Security Results
-        uses: ServiceNow/servicenow-devops-security-result@v3.1.0
-        with:
-            # Devops Integration User Name
-            devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-            # Devops Integration User Password
-            devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
-            # Devops Integration Token
-            devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-            # ServiceNow Instance URL
-            instance-url: ${{ secrets.SN_INSTANCE_URL }}
-            # Orchestration Tool Id
-            tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-            # GitHub Context
-            context-github: ${{ toJSON(github) }}
-            # Display Name of the Job
-            job-name: 'ServiceNow Security Scan Results'
-            security-result-attributes: '{ "scanner": "Checkmarx SAST", "projectId": "1094", "securityToolId": "9adc3fe7871e02105cfa75d5dabb3579" }'
-            # scanner: Scanning tool and is required e.g. Checkmarx SAST.
-            # projectId: Id of your Checkmarx SAST project and is required. This attribute is applicable only for Checkmarx SAST.
-            # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
+  # ServiceNowSecurityScanResultsCheckmarxSAST:
+  #   # jobs that must complete successfully before this job will run
+  #   needs: sonarScan
+  #   # type of machine to run the job on
+  #   runs-on: ubuntu-latest
+  #   name: ServiceNow Security Scan Results
+  #   steps:
+  #     - name: ServiceNow DevOps Security Results
+  #       uses: ServiceNow/servicenow-devops-security-result@v3.1.0
+  #       with:
+  #           # Devops Integration User Name
+  #           devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+  #           # Devops Integration User Password
+  #           devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+  #           # Devops Integration Token
+  #           devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+  #           # ServiceNow Instance URL
+  #           instance-url: ${{ secrets.SN_INSTANCE_URL }}
+  #           # Orchestration Tool Id
+  #           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+  #           # GitHub Context
+  #           context-github: ${{ toJSON(github) }}
+  #           # Display Name of the Job
+  #           job-name: 'ServiceNow Security Scan Results'
+  #           security-result-attributes: '{ "scanner": "Checkmarx SAST", "projectId": "1094", "securityToolId": "9adc3fe7871e02105cfa75d5dabb3579" }'
+  #           # scanner: Scanning tool and is required e.g. Checkmarx SAST.
+  #           # projectId: Id of your Checkmarx SAST project and is required. This attribute is applicable only for Checkmarx SAST.
+  #           # securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
 
   ServiceNowSecurityScanResultsCheckmarxOne:
     # jobs that must complete successfully before this job will run
@@ -244,7 +244,8 @@ jobs:
 
   registerPackage:
     name: 'Register Package'
-    needs: [ServiceNowSecurityScanResultsVeracode, ServiceNowSecurityScanResultsCheckmarxSAST, ServiceNowSecurityScanResultsCheckmarxOne]
+    # needs: [ServiceNowSecurityScanResultsVeracode, ServiceNowSecurityScanResultsCheckmarxSAST, ServiceNowSecurityScanResultsCheckmarxOne]
+    needs: [ServiceNowSecurityScanResultsCheckmarxOne]
     runs-on: ubuntu-latest
     steps:
     - name: ServiceNow DevOps Register Package

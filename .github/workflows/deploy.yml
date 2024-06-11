@@ -338,7 +338,7 @@ jobs:
 
   getChange:
     # jobs that must complete successfully before this job will run
-    needs: change
+    needs: postChange
     # type of machine to run the job on
     runs-on: ubuntu-latest
     name: 'ServiceNow DevOps Get Change'
@@ -365,7 +365,7 @@ jobs:
           
   updateChange:
     # jobs that must complete successfully before this job will run
-    needs: change
+    needs: postChange
     # type of machine to run the job on
     runs-on: ubuntu-latest
     name: 'ServiceNow DevOps Update Change'

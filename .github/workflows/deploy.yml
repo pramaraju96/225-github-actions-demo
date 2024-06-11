@@ -329,8 +329,8 @@ jobs:
   postChange:
       #if: github.event.pull_request.merged == true
       name: PostChange
-      with:
-          environment: production
+      runs-on: ubuntu-latest
+      environment: production
       needs: change
       steps:
           - name: Run deployment scripts

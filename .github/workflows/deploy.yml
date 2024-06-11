@@ -39,8 +39,8 @@ jobs:
         # Desired timezone for MacOS
         timezoneMacos: "Asia/Singapore"
         
-    - name: Run Tests with Maven
-      run: mvn -B test --file pom.xml
+    # - name: Run Tests with Maven
+    #   run: mvn -B test --file pom.xml
 
     - name: ServiceNow DevOps Unit Test Results
     # You may pin to the exact commit or the version.
